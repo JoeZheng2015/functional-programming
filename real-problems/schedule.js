@@ -30,9 +30,10 @@ const data = [
 //     return item
 // })
 const genHasDiscount = R.any(R.compose(R.equals(2), R.prop('type')))
-const processSchedules = data => data.map(item => {
-    item.hasDiscount = genHasDiscount(item.prices)
-    return item
-})
+// const processSchedules = data => data.map(item => {
+//     item.hasDiscount = genHasDiscount(item.prices)
+//     return item
+// })
+const processSchedules = R.map(item => R.assoc('hasDiscount', genHasDiscount, item))
 const schedules = processSchedules(data)
 console.log(schedules.map(schedule => schedule.hasDiscount)) // [false, true]
