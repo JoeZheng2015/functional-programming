@@ -1,4 +1,4 @@
-const {converge, equals, sort, descend, compose} = require('ramda')
+const {converge, equals, sort, descend, compose, identity} = require('ramda')
 
 const shouldBeTrue = [6, 1]
 const shouldBeFalse = [1, 6]
@@ -18,7 +18,7 @@ const isFirstBiggest = converge(
     equals,
     [
         head,
-        compose(head, sort(descend)),
+        compose(head, sort(descend(identity))),
     ]
 )
 
