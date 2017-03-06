@@ -29,7 +29,7 @@ const data = [
 //     item.hasDiscount = item.prices.some(price => price.type === 2)
 //     return item
 // })
-const genHasDiscount = R.some(price => R.equals(price.type, 2))
+const genHasDiscount = R.any(price => R.equals(price.type, 2))
 const processSchedules = data => data.map(item => {
     item.hasDiscount = genHasDiscount(item.prices)
     return item
