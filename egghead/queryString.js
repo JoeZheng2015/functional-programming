@@ -24,8 +24,9 @@ const queryString = '?page=2&pageSize=10&total=203'
 // )
 
 // egghead写的
+// 总结：我之所以写不出，是不了解有 fromPairs 函数
 const parseQs = R.compose(
-    R.fromPair,
+    R.fromPairs,
     R.map(R.split('=')),
     R.split('&'),
     R.tail
