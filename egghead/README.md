@@ -5,3 +5,6 @@
 
 ## fromPairs
 抽象 reduce 构造对象的函数
+
+## project
+取数组中对应的属性
