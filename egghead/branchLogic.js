@@ -6,14 +6,15 @@ const products = [
 
 // 对应不同类型,应用不用折扣
 const applyDiscount = (discount, price) => price * (100 - discount) / 100
+const DISCOUNT = {
+    'clothes': 50,
+    'games': 10,
+}
 const result = products.map(p => {
-    if (p.category === 'clothes') {
-        p.price = applyDiscount(50, p.price)
-    }
-    else if (p.category === 'games') {
-        p.price = applyDiscount(10, p.price)
-    }
+    p.price = DISCOUNT[p.category] ? applyDiscount(DISCOUNT[p.category], p.price) : p.price
 
     return p
 })
+
+
 console.log(result)
