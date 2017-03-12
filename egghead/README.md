@@ -23,3 +23,12 @@ R.over(xLens, x => 3 * x, {x: 1}) // 3
 ## cond
 多分支条件逻辑，等同于 `if else...`，类似的还有双分支 `ifElse` 和单分支的 `when`
 
+## where
+与 filter, find 配合实现多条件限制
+
+## __
+占位函数
+
+## pipe
+从左到右的 compose 函数
+
