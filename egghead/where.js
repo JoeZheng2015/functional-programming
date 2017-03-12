@@ -7,9 +7,15 @@ const products = [
     {name: 'Cards', price: 35, category: 'games', stock: 10},
 ]
 
+const all = (...args) => a => args.every(fn => fn.call(null, a))
+const categoryCond = p => p.category === 'clothes'
+const stockCond = p => p.stock < 50
+const priceCond = p => p.price < 100
+
 const getResults = xs => xs
-    .filter(p => p.category === 'clothes' && p.stock < 50 && p.price < 100)
+    .filter(all(categoryCond, stockCond, priceCond))
     .map(p => p.name)
+
 
 const result = getResults(products)
 console.log(result)
