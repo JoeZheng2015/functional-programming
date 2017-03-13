@@ -7,7 +7,12 @@ const array = [
     {id: 2, name: 'Iphone'},
 ]
 
-const arrayToObject = R.pipe(R.map(item => [item.id, item]), R.fromPairs)
+const arrayToObject = R.converge(R.zipObj,
+    [
+        R.map(R.prop('id')),
+        R.identity
+    ]
+)
 const result = arrayToObject(array)
 
 console.log(result)
