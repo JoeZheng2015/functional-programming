@@ -10,6 +10,7 @@ const view = (prop, target) => target[prop]
 const set = (prop, value, target) => Object.assign({}, target, {[prop]: value})
 const over = (prop, action, target) => Object.assign({}, target, {[prop]: action(prop)})
 
-const result = over('firstName', R.toUpper, person)
+const fLens = R.lensProp('firstName')
+const result = R.over(fLens, R.toUpper, person)
 
 console.log(result)
