@@ -13,8 +13,9 @@ const dogCheck = pet => pet.type === 'dog'
 const catCheck = pet => pet.type === 'cat'
 const partition = (predicate, xs) => [xs.filter(predicate), xs.filter(x => !predicate(x))]
 
-
-const result = partition(dogCheck, pets)
+const dogs = R.filter(dogCheck, pets)
+const cats = R.reject(dogCheck, pets)
+const result = R.partition(dogCheck, pets)
 
 console.log(result)
 
