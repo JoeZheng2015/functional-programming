@@ -11,10 +11,10 @@ const pets = [
 
 const dogCheck = pet => pet.type === 'dog'
 const catCheck = pet => pet.type === 'cat'
+const partition = (predicate, xs) => [xs.filter(predicate), xs.filter(x => !predicate(x))]
 
 
-
-const result = pets.filter(dogCheck)
+const result = partition(dogCheck, pets)
 
 console.log(result)
 
