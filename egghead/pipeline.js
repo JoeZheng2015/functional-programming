@@ -12,7 +12,12 @@ const teams = [
 // 非函数式
 // const getTopName = (teams) => teams.sort((a, b) => b.score - a.score)[0].name
 
-const getTopName = R.pipe(R.sort(R.descend(R.prop('score'))), R.head, R.prop('name'))
+const sortByScoreDesc = R.sort(R.descend(R.prop('score')))
+const getTopName = R.pipe(
+    sortByScoreDesc,
+    R.head,
+    R.prop('name')
+)
 
 const result = getTopName(teams)
 console.log(result)
