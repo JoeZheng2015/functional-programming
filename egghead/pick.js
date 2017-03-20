@@ -16,7 +16,16 @@ const pickAll = props => target => props.reduce((acc, prop) => {
     return acc
 }, {})
 
-const getProps = pickAll(['name', 'price', 'haha'])
+const pickBy = predicate => target => Object.keys(target).reduce((acc, prop) => {
+    const value = target[prop]
+
+    if (predicate(value, prop)) {
+        acc[prop] = value
+    }
+    return acc
+}, {})
+
+const getProps = pickBy(value => Number(value))
 
 const result = getProps(product)
 console.log(result)
