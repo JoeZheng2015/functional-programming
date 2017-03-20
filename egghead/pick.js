@@ -4,17 +4,12 @@ const product = {
     stock: 1,
 }
 
-const getProps = props => target => {
-    let result = {}
-    for (let i = 0; i < props.length; i++) {
-        const prop = props[i]
-
-        if (target.hasOwnProperty(prop)) {
-            result[prop] = target[prop]
-        }
+const getProps = props => target => props.reduce((acc, prop) => {
+    if (target.hasOwnProperty(prop)) {
+        acc[prop] = target[prop]
     }
-    return result
-}
+    return acc
+}, {})
 
-const result = getProps(['name', 'price'])(product)
+const result = getProps(['name', 'price', 'haha'])(product)
 console.log(result)
