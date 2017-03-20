@@ -25,7 +25,14 @@ const pickBy = predicate => target => Object.keys(target).reduce((acc, prop) => 
     return acc
 }, {})
 
-const getProps = pickBy(value => Number(value))
+const omit = props => target => Object.keys(target).reduce((acc, prop) => {
+    if (props.indexOf(prop) === -1) {
+        acc[prop] = target[prop]
+    }
+    return acc
+}, {})
+
+const getProps = omit(['name', 'stock'])
 
 const result = getProps(product)
 console.log(result)
