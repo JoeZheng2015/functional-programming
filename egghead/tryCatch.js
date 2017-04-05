@@ -1,6 +1,6 @@
 const R = require('ramda')
 
-const getName = R.prop('name')
+const getName = R.tryCatch(R.prop('name'), R.always('Default'))
 const result = getName(undefined)
 
 console.log(result)
