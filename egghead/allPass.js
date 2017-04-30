@@ -25,7 +25,12 @@ const cars = [
 const result = cars.filter(car => {
     const goodMilage = car => car.mpg >= 30
     const fourDoors = car => car.doors === 4
+    const predicates = [
+        goodMilage,
+        fourDoors,
+    ]
 
-    return goodMilage(car) && fourDoors(car)
+    return predicates.every(predicate => predicate(car))
 })
+
 console.log(result)
