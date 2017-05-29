@@ -1,7 +1,8 @@
+const R = require('ramda')
 const countries = [
     {cc: 'US', name: 'USA'},
     {cc: 'CN', name: 'China'},
 ]
-const getCountry = (cc, list) => list.find(country => country['cc'] === cc)
+const getCountry = R.useWith(R.find, [R.propEq('cc'), R.identity])
 const result = getCountry('CN', countries)
 console.log(result)
