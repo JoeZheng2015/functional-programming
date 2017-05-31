@@ -27,12 +27,18 @@ const product = {
     ]
 }
 
-const getUniqueColors = R.pipe(
-    R.prop('sizes'),
-    R.map(R.prop('colors')),
-    R.unnest,
-    R.pluck('name'),
-    R.uniq
-)
+// const getUniqueColors = R.pipe(
+//     R.prop('sizes'),
+//     R.map(R.prop('colors')),
+//     R.unnest,
+//     R.pluck('name'),
+//     R.uniq
+// )
+const getUniqueColors = product => [
+    ...product.sizes.reduce((colors, size) => {
+        size.colors.forEach(color => colors.add(color.name))
+        return colors
+    }, new Set())
+]
 const result = getUniqueColors(product)
 console.log(result)
